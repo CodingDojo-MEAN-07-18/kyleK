@@ -4,6 +4,10 @@ var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.get('/cars/new', function(req, res) {
+    res.render("form")
+})
+
 app.get('/cars', function(req, res) {
     res.render("cars")
 })
