@@ -17,8 +17,12 @@
             socket.on('existing_users', function(users) {
                 console.log('this is existing users running', users);
                 const loggedUsers = $('#loggedUsers')
-                const element = `<tr class="active"><td id="${users.id}">Logged in User! ${users.name}</td></tr>`
-                loggedUsers.append(element);
+                for (var key in users) {
+                    const user = users[key]
+                    const element = `<tr class="active"><td id="${user.id}">Logged in User! ${user.name}</td></tr>`
+                    loggedUsers.append(element);
+
+                }
             })
             socket.on('updateMessage', function(message) {
                 const existingMessages = $('#existingMessages')
@@ -28,7 +32,6 @@
             socket.on('user_disconnected', function(user) {
                 console.log('disconnected user', user)
                 const element = $(`#${user.id}`)
-                
                 console.log(element);
                 element.remove();
             })
