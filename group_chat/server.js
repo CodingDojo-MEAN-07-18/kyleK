@@ -36,7 +36,7 @@ app.post('/users', function (req, res) {
     
 })
 const users = {};
-let messages = [];
+const messages = [];
 io.on('connection', socket=> {
     console.log('incoming socket connection');
     console.log(socket.id)
@@ -58,6 +58,7 @@ io.on('connection', socket=> {
         console.log(users);
         socket.broadcast.emit('got_new_user', user)
         socket.emit('existing_users', users)
+        socket.emit('loggedMessages', messages)
         console.log(messages);
     });
     socket.on('disconnect', function(name) {

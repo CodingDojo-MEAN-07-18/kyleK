@@ -24,6 +24,22 @@
 
                 }
             })
+            socket.on('loggedMessages', function(messages) {
+                console.log('this is logged messages running', messages);
+                const loggedMessages = $('#loggedMessages') 
+                for (i =0; i< messages.length; i++){
+                    const msg = messages[i];
+                    console.log(messages[i]);
+                    const element = `<tr class="danger"><td>${msg.time}</td><td>${msg.user.name}: ${msg.message}</td></tr>`
+                    loggedMessages.append(element);
+                }
+                console.log(messages)
+
+                    
+                        
+
+                  
+            })
             socket.on('updateMessage', function(message) {
                 const existingMessages = $('#existingMessages')
                 const element = `<tr class="danger"><td>${message.time}</td><td>${message.user.name}: ${message.message}</td></tr>`
