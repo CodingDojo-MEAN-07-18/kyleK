@@ -14,9 +14,9 @@
         </div>
         <div>
             <form action='/messages' method="POST">
-                <input type="text" name="name">
-                <input type="type" name="message">
-                <input type="button" name="button" value="Post Message">
+                Name: <input type="text" name="name">
+                Message: <input type="type" name="message">
+                <input type="submit" name="button" value="Post Message">
             </form>
         </div>
         <div id="exisitng_messages">
@@ -25,8 +25,17 @@
                 <% for (const message of messages) {%>
                     <h3>Name: <%= message.name %></h3>
                     <p>Mesage: <%= message.message %></p>
-               <% } %>
-            <% } %>
+                    <% for (const comment of message._comments) {%>
+                        <h5>Name: <%= comment.name %></h5>
+                        <h5>Comment: <%= comment.comment %></h5>
+                    <% } %>
+                    <form action='/comments/<%= message._id %>' method ="POST">
+                     Name: <input type="text" name="name">
+                     Comment: <input type="type" name="comment">
+                     <input type="submit" name="button" value="Post Comment">
+                    </form>
+                     <% } %>
+                <% } %>
         </div>
     </fieldset>
 </body>
