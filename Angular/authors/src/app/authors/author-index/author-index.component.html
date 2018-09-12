@@ -1,0 +1,20 @@
+
+  <h2>Favorite authors</h2>
+  <a href='/new'>Add an author</a>
+  <h3>We have quotes by: </h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Author</td>
+        <td>Actions available</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let author of authors' >
+        <td>{{author.name}}</td>
+        <td>{{author.content}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>{{author}}</p>
+<p *ngIf="false">Im true</p>
