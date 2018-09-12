@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class AuthorIndexComponent {
-  religions = ['christian', 'buddhist', 'atheism'];
   authors = [
     {name: "first author", content: "first author's content"},
     {name: "second author", content: "second author's content"},

@@ -10,7 +10,7 @@
   <mat-form-field>
     <form>
       <legend>Name: </legend>
-      <input type="text" name="name" [(ngModel)]="enteredValue">
+      <input matInput type="text" name="name" [(ngModel)]="enteredValue">
       <br>
       <button (click)="onEditAuthor()">Cancel</button>
       <button mat-raised-button (click)="onEditAuthor()">Submit</button>
