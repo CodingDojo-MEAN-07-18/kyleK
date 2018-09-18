@@ -1,6 +1,6 @@
 
   <h2>Favorite authors</h2>
-  <a href='/new'>Add an author</a>
+  <a routerLink='/create'>Add an author</a>
   <h3>We have quotes by: </h3>
   <table>
     <thead>
@@ -9,12 +9,12 @@
         <td>Actions available</td>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="authors.length > 0">
       <tr *ngFor="let author of authors" >
         <td>{{author.name}}</td>
-        <td>{{author.content}}</td>
+        <td><a [routerLink]="['/edit', author.id]">EDIT</a> | <button (click)="onDelete(author.id)">DELETE</button></td>
       </tr>
     </tbody>
   </table>
   <p>{{author}}</p>
-<p *ngIf="false">Im true</p>
+<p *ngIf="authors.length <= 0">No author has been added yet!</p>

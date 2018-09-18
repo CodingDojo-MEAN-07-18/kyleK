@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component , Input } from '@angular/core';
+import { Author } from '../author.model';
 
 @Component({
   selector: 'app-author-edit',
@@ -7,10 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AuthorEditComponent {
   enteredValue = '';
-  editAuthor = '';
+  @Input () authors : Author[]
 
-
-  onEditAuthor() {
-    this.editAuthor = this.enteredValue;
+  onEditAuthor(author) {
+    author.name = this.enteredValue;
   }
 }

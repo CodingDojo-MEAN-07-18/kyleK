@@ -1,15 +1,17 @@
 <mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
     <h2>Favorite Authors</h2>
-    <a href='/new'>home</a>
+    <a routerLink='/'>home</a>
     <h3>Add a new author:</h3>
-  <mat-form-field>
-    <form>
-      <legend>Name:</legend>
-      <input matInput type="text" name="name" value="name">
+  <form (submit)="onSaveAuthor(authorForm)" #authorForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+
+      <input matInput type="text" name="name" [ngModel]='author?.name' required minlength="3" #name="ngModel" placeholder="Author Name">
+      <mat-error *ngIf="name.invalid">Please enter an author</mat-error>
       <br>
-      <button (click)="onAddAuthor()">Cancel</button>
-      <button (click)="onAddAuthor()">Submit</button>
-    </form>
-  </mat-form-field>
+      <button type="reset">Cancel</button>
+      <button type="submit">Submit</button>
+    </mat-form-field>
+  </form>
 </mat-card>
 
